@@ -3,6 +3,8 @@ import java.sql.*;
 public class Responsables {
     
     String curp, nombre, sexo, telefono, parentesco, estado;
+    static String todos = "SELECT * FROM responsables ORDER BY nombrer DESC";
+    static String curps = "SELECT curpr From responsables ORDER BY curpr";
     
     public Responsables(){
         
@@ -42,7 +44,7 @@ public class Responsables {
     public int borrar(Connection con){
         int resultado = 0;
         try {
-            String sql = "DELATE FROM responsables WHERE curpr = ?";
+            String sql = "DELETE FROM responsables WHERE curpr = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, curp);
             
@@ -58,7 +60,7 @@ public class Responsables {
     public int actualizar(Connection con){
         int resultado = 0;
         try {
-            String sql = "UPDATE responsables SET nombrer = ?, sexor = ?, telefonor = ?, parentesco = ?, estadoer = ? WHERE curp = ?";
+            String sql = "UPDATE responsables SET nombrer = ?, sexor = ?, telefonor = ?, parentesco = ?, estador = ? WHERE curpr = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             ps.setString(2, sexo);

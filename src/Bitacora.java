@@ -4,9 +4,13 @@ public class Bitacora {
     
     String folio, tiempo, tipo, observaciones, infantes, responsables, educadores;
     
-    public Bitacora(){
-        
+    static String todos = "SELECT * FROM bitacora ORDER BY folio DESC";
+
+    Bitacora() {
+         
     }
+    
+     
 
     public Bitacora(String folio, String tiempo, String tipo, String observaciones, String infantes, String responsables, String educadores) {
         this.folio = folio;
@@ -44,7 +48,7 @@ public class Bitacora {
     public int borrar(Connection con){
         int resultado = 0;
         try {
-            String sql = "DELATE FROM bitacora WHERE folio = ?";
+            String sql = "DELETE FROM bitacora WHERE folio = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, folio);
             

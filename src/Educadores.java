@@ -3,10 +3,14 @@ import java.sql.*;
 public class Educadores {
     
     String curp, nombre, sexo, telefono, direccion, estado;
+    static String todos = "SELECT * FROM educadores ORDER BY nombree DESC";
+    static String curps = "SELECT curpe From educadores ORDER BY curpe";
 
-    public Educadores(){
-        
+    Educadores() {
+         
     }
+    
+ 
     
     public Educadores(String curp, String nombre, String sexo, String telefono, String direccion, String estado) {
         this.curp = curp;
@@ -42,7 +46,7 @@ public class Educadores {
     public int borrar(Connection con){
         int resultado = 0;
         try {
-            String sql = "DELATE FROM educadores WHERE curpe = ?";
+            String sql = "DELETE FROM educadores WHERE curpe = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, curp);
             

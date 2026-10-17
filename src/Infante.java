@@ -3,11 +3,16 @@ import java.sql.*;
 public class Infante {
     
     String curp, nombre, sexo, fecha, estado;
+    static String todos = "SELECT * FROM infantes ORDER BY nombrei DESC";
     
-    public Infante(){
+    static String curps = "SELECT curpi From infantes ORDER BY curpi";
+
+    Infante() {
         
     }
-
+    
+     
+    
     public Infante(String curp, String nombre, String sexo, String fecha, String estado) {
         this.curp = curp;
         this.nombre = nombre;
@@ -15,6 +20,8 @@ public class Infante {
         this.fecha = fecha;
         this.estado = estado;
     }
+
+    
     
     //INSERT
     public int insertar(Connection con){
@@ -30,10 +37,11 @@ public class Infante {
             
             return ps.executeUpdate();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
             return resulato;
         }
+        
     }
     
     //DELATE
@@ -46,7 +54,7 @@ public class Infante {
             
             return ps.executeUpdate();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
             return resultado;
         }
@@ -55,8 +63,8 @@ public class Infante {
     //UPDATE
     public int actualizar(Connection con){
         int resultado = 0;
-        try {
-            String sql = "UPDATE infantes SET nombrei = ?, sexoi = ?, fecha_nac = ?, estadoi = ? WHERE curp = ?";
+        try { 
+            String sql = "UPDATE infantes SET nombrei = ?, sexoi = ?, fecha_nac = ?, estadoi = ? WHERE curpi = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             ps.setString(2, sexo);
@@ -66,7 +74,7 @@ public class Infante {
             
             return ps.executeUpdate();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
             return resultado;
         }
